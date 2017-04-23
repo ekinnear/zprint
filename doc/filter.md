@@ -231,17 +231,22 @@ Here are the steps to set this version up:
   2. Create a file for testing called `helloworld.clj` with the single line
   `"hello world"` in it.
 
-  3. Figure out the filename for the class cache.  This example 
+  3. Choose a filename for the new class cache.  This example 
   assumes `zprint.filter.cache`
 
   4. Create the list of classes used on startup -- type this command:
 
   ```
-  java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:off \
+  java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:off 
           -XX:DumpLoadedClassList=zprint.filter.classlist \
 	  -cp zprint-filter-0.3.0 \
           zprint.main  < helloworld.clj > /dev/null
   ```
+
+  or, for easier copying and pasting: 
+  ```
+  java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:off -XX:DumpLoadedClassList=zprint.filter.classlist -cp zprint-filter-* zprint.main < helloworld.clj > /dev/null
+  ```  
 
   5. Figure out where you are.  Type `pwd`, remember that as the `cwd`.
 
