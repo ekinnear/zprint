@@ -239,7 +239,7 @@ Here are the steps to set this version up:
   4. Create the list of classes used on startup -- type this command:
 
   ```
-  java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:off 
+  java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:off \
           -XX:DumpLoadedClassList=zprint.filter.classlist \
 	  -cp zprint-filter-0.3.0 \
           zprint.main  < helloworld.clj > /dev/null
