@@ -246,6 +246,7 @@ Here are the steps to set this version up:
   ```
 
   or, for easier copying and pasting: 
+  
   ```
   java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:off -XX:DumpLoadedClassList=zprint.filter.classlist -cp zprint-filter-* zprint.main < helloworld.clj > /dev/null
   ```  
@@ -265,6 +266,7 @@ Here are the steps to set this version up:
   ```
 
     or, for easier copying and pasting: 
+
   ```
    java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:dump -XX:SharedClassListFile=zprint.filter.classlist -XX:SharedArchiveFile=cwd/zprint.filter.cache -cp cwd/zprint-filter-0.3.0 zprint.main < helloworld.clj 
   ```  
@@ -282,6 +284,7 @@ Here are the steps to set this version up:
   ```
 
       or, for easier copying and pasting: 
+      
   ```
  java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:on -XX:SharedArchiveFile=cwd/zprint.filter.cache -cp cwd/zprint-filter-0.3.0 zprint.main
   ```  
