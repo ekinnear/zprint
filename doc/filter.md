@@ -247,7 +247,7 @@ Here are the steps to set this version up:
 
   or, for easier copying and pasting: 
   
-  
+
   ```
   java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:off -XX:DumpLoadedClassList=zprint.filter.classlist -cp zprint-filter-* zprint.main < helloworld.clj > /dev/null
   ```  
@@ -369,7 +369,7 @@ the top level of an s-expression before sending all of the information
 off to an external program. I'm not even going to try to sort through
 the various options and recommend one particular one.
 
-### Sublime Text
+### Sublime Text 2 or 3
 
 Once you've gotten one of the above methods to work via an executable on your
 PATH, you can use the [External Command](https://packagecontrol.io/packages/External%20Command)
@@ -377,8 +377,7 @@ plugin to send either the entire file or your current selection to this
 executable.
 
 Once you've installed External Command (manually or via [Package Control](https://packagecontrol.io)),
-place the following in your sublime-keymap file, which is accessible via
-the Sublime Text menu item:
+place the following in your sublime-keymap file:
 
 ```
 { "keys": ["< YOUR KEYBOARD SHORTCUT >"], "command": "filter_through_command", "args": { "cmdline": "< EXECUTABLE NAME HERE >" } }
@@ -389,10 +388,10 @@ your executable.
 
 If you have selected text, it will send your current selection to the executable
  and replace only that selection with the output. You can also use 
- `Selection > Expand Selection to Brackets` (defaults to Ctrl-Shift-m) to select 
+ `Selection > Expand Selection to Brackets` (defaults to `Ctrl-Shift-m`) to select 
  between parentheses and repeat to include the parentheses themseleves.  
 
-### other editors
+### Other Editors
 
 I would suggest that you check the documentation for your editor or 
 IDE for how to send text to the `fmt` filter, as the answer to that
