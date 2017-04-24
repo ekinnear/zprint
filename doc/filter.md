@@ -217,6 +217,8 @@ while editing source is clearly not "production".  I have actually
 talked to people at Oracle and have been assured that developers
 __can__ use this feature while doing development.  
 
+This option was added in Java 1.8.0_40.
+
 This approach (using the same zprint-filter downloaded from Github),
 creates a cache of information in a single file that will speed up startup.
 Not clear exactly what is in the cache, but it does help, more than
@@ -262,6 +264,11 @@ Here are the steps to set this version up:
           zprint.main < helloworld.clj 
   ```
 
+    or, for easier copying and pasting: 
+  ```
+   java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:dump -XX:SharedClassListFile=zprint.filter.classlist -XX:SharedArchiveFile=cwd/zprint.filter.cache -cp cwd/zprint-filter-0.3.0 zprint.main < helloworld.clj 
+  ```  
+
   This will output a bunch of statistics about building the cache.
 
   7. Create a file `za` (for zprint-filter appcds) with the following contents,
@@ -273,6 +280,11 @@ Here are the steps to set this version up:
           -XX:SharedArchiveFile=cwd/zprint.filter.cache \
 	  -cp cwd/zprint-filter-0.3.0 zprint.main
   ```
+
+      or, for easier copying and pasting: 
+  ```
+ java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:on -XX:SharedArchiveFile=cwd/zprint.filter.cache -cp cwd/zprint-filter-0.3.0 zprint.main
+  ```  
 
   8. Make that file executable:
   
@@ -347,6 +359,29 @@ Emacs seems to have several ways to do this, including moving to
 the top level of an s-expression before sending all of the information
 off to an external program. I'm not even going to try to sort through
 the various options and recommend one particular one.
+
+### Sublime Text
+
+Once you've gotten one of the above methods to work via an executable on your
+PATH, you can use the [External Command](https://packagecontrol.io/packages/External%20Command)
+plugin to send either the entire file or your current selection to this 
+executable.
+
+Once you've installed External Command (manually or via [Package Control](https://packagecontrol.io)),
+place the following in your sublime-keymap file, which is accessible via
+the Sublime Text menu item:
+
+```
+{ "keys": ["< YOUR KEYBOARD SHORTCUT >"], "command": "filter_through_command", "args": { "cmdline": "< EXECUTABLE NAME HERE >" } }
+``` 
+
+At this point, you can use your keyboard shortcut to send the entire file to
+your executable. 
+
+If you have selected text, it will send your current selection to the executable
+ and replace only that selection with the output. You can also use 
+ `Selection > Expand Selection to Brackets` (defaults to Ctrl-Shift-m) to select 
+ between parentheses and repeat to include the parentheses themseleves.  
 
 ### other editors
 
